@@ -1,0 +1,19 @@
+reviews:
+  namespace: student40-bookinfo-dev
+  replicas: 1
+  imagePullSecrets: registry-bookinfo
+  port: 8083
+  image: ghcr.io/razertotozz/bookinfo-reviews
+  tag: dev
+ingress:
+  host: sitkmutt.bookinfo.dev.opsta.net
+  path: "/student40/reviews(/|$)(.*)"
+  serviceType: ClusterIP
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+extraEnv:
+  RATINGS_HOSTNAME: http://sitkmutt.bookinfo.dev.opsta.net/student40/ratings
+  DETAILS_HOSTNAME: http://sitkmutt.bookinfo.dev.opsta.net/student40/details
+  REVIEWS_HOSTNAME: http://sitkmutt.bookinfo.dev.opsta.net/student40/reviews
+  FLOOD_FACTOR: 0
