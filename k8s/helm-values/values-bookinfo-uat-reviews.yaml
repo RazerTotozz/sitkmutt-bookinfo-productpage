@@ -1,13 +1,13 @@
-reviews:
+productpage:
   namespace: student40-bookinfo-uat
   replicas: 1
   imagePullSecrets: registry-bookinfo
   port: 8083
-  image: ghcr.io/razertotozz/bookinfo-reviews
+  image: ghcr.io/razertotozz/bookinfo-productpage
   tag: uat
 ingress:
   host: sitkmutt.bookinfo.uat.opsta.net
-  path: "/student40/reviews(/|$)(.*)"
+  path: "/student40/productpage(/|$)(.*)"
   serviceType: ClusterIP
   annotations:
     kubernetes.io/ingress.class: nginx
